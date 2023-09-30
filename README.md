@@ -1,3 +1,3 @@
 # ScreenRecorder Backend  
 
-- Django backend for a screen recorder chrome extension
+- Django restAPI for a screen recorder chrome extension
