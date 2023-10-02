@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
+class Video(model.Model):
+    video_id = models.IntegerField()
+    chunk = models.FileField(upload_to='media/videos')

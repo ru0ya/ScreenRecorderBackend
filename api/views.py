@@ -5,6 +5,7 @@ from rest_framework import status
 import os
 import tempfile
 import pika
+import openai
 
 
 video_files = {}
@@ -29,6 +30,21 @@ class RabbitMQ:
 
     def close_connection(self):
         self.connection.close()
+
+
+def transcribe_video(video_file):
+    """
+    Transcribes video to audio
+    """
+    audio_data = convert_video_to_audio(video_file)
+
+    # send audio data to Whisper API
+    whisper_response = openai.Whisper.transcribe(audio_data)
+
+    # process transcripiton result
+    transcription = process_whisper_response(whisper_response)
+
+    return transcription
 
 
 class StartScreenRecording(APIView):
